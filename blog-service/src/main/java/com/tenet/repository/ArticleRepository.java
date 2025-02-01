@@ -12,4 +12,5 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
 
     @Query("SELECT a FROM Article a WHERE a.publishedAt < :date")
     List<Article> findArticlesPublishedBefore(@Param("date") LocalDateTime date);
+
 }

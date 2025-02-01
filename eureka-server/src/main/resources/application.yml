@@ -1,0 +1,17 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: www.qrcoddy.com
+    nonSecurePort: 80
+    securePort: 443
+    securePortEnabled: true
+    instanceId: ${eureka.instance.hostname}:${server.port}
+    statusPageUrl: https://${eureka.instance.hostname}/eureka/
+    homePageUrl: https://${eureka.instance.hostname}/eureka/
+    healthCheckUrl: https://${eureka.instance.hostname}/eureka/health
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+

@@ -2,4 +2,5 @@ rootProject.name = 'eureka-auth-blog'
 include 'auth-service'
 include 'blog-service'
 include 'common'
+include 'eureka-server'
 

@@ -31,7 +31,7 @@ public class AuthService {
                 .lastName(registerRequest.getLastName())
                 .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
-                .role(Role.ADMIN)
+                .role(Role.USER)
                 .accountNonExpired(true)
                 .accountNonLocked(true)
                 .credentialsNonExpired(true)
@@ -45,6 +45,7 @@ public class AuthService {
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         var user = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new UserNotFoundException("User with Email " + request.getEmail() + " not found"));
-        return AuthenticationResponse.builder().token(jwtService.generateToken(user)).build();
+        String token = jwtService.generateToken(user);
+        return AuthenticationResponse.builder().token("Bearer " + token).build();
     }
 }

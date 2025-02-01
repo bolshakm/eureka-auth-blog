@@ -20,6 +20,7 @@ public class Article {
     private String title;
     @Column(columnDefinition = "TEXT")
     private String content;
-    private String author;
+    @ManyToOne
+    private User author;
     private LocalDateTime publishedAt;
 }

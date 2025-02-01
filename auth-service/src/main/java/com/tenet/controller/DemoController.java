@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     @Secured("USER")
-    @GetMapping
-    public ResponseEntity<String> demo(){
-        return ResponseEntity.ok("This is a secured endpoint");
+    @GetMapping("/user")
+    public ResponseEntity<String> getForUsers(){
+        return ResponseEntity.ok("This is a user secured endpoint");
 
     }
 
     @Secured("ADMIN")
     @GetMapping("/admin")
-    public ResponseEntity<String> demo2(){
-        return ResponseEntity.ok("This is a secured endpoint");
+    public ResponseEntity<String> getForAdmin(){
+        return ResponseEntity.ok("This is a admin secured endpoint");
 
     }
 
     @Secured({ "ADMIN", "USER" })
     @GetMapping("/all")
-    public ResponseEntity<String> demo3(){
-        return ResponseEntity.ok("This is a secured endpoint");
+    public ResponseEntity<String> getForAll(){
+        return ResponseEntity.ok("This is a all secured endpoint");
 
     }
 }

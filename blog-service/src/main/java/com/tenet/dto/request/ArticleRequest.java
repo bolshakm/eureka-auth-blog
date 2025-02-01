@@ -9,6 +9,4 @@ public class ArticleRequest {
     private String title;
     @NotBlank
     private String content;
-    @NotBlank
-    private String author;
 }

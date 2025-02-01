@@ -1,8 +1,10 @@
 spring:
+  application:
+    name: auth-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/user_auth
-    username: dbuser
-    password: password0506
+    url: jdbc:postgresql://auth-blog.cvmo4iemgf4b.eu-central-1.rds.amazonaws.com/auth_blog
+    username: postgres
+    password: postgres-pass
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -12,3 +14,17 @@ spring:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+springdoc:
+  swagger-ui:
+    url: /auth/v3/api-docs
+    path: /open/api/swagger-ui.html
+    config-url: /auth/v3/api-docs/swagger-config
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://3.79.186.154:8761/eureka/
+  instance:
+    preferIpAddress: true
